@@ -15,18 +15,21 @@ const Courses = ({ navigation }) => {
 		<View>
 			<FlatList
 				data={cards}
-				renderItem={({ item }) => (
-					<Card>
-						<TouchableOpacity onPress={() => navigation.navigate(item.route)}>
-							<Text h4>{item.name}</Text>
-							<LinearProgress
-								color="primary"
-								variant={"determinate"}
-								value={0.2}
-							/>
-						</TouchableOpacity>
-					</Card>
-				)}
+				renderItem={({ item }) => {
+					const value = item.name === "Whaling" ? 0.1 : 0.2;
+					return (
+						<Card>
+							<TouchableOpacity onPress={() => navigation.navigate(item.route)}>
+								<Text h4>{item.name}</Text>
+								<LinearProgress
+									color="primary"
+									variant={"determinate"}
+									value={0.2}
+								/>
+							</TouchableOpacity>
+						</Card>
+					);
+				}}
 				keyExtractor={(item) => item.id}
 			/>
 		</View>
