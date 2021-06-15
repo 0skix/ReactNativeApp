@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import Welcome from "../screens/Welcome";
@@ -20,9 +20,11 @@ export default function BottomNavigator() {
 			<Tab.Screen
 				name="Welcome"
 				component={Welcome}
-				// options={{
-				// 	tabBarIcon: () => <TabBarIcon name="ios-code" color={"red"} />,
-				// }}
+				options={{
+					tabBarIcon: () => {
+						<AntDesign name="home" size={24} color="black" />;
+					},
+				}}
 			/>
 			<Tab.Screen
 				name="Courses"

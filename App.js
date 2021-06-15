@@ -9,18 +9,21 @@ import ProfileContextProvider from "./contexts/ProfileContext";
 import { CoursesContextProvider } from "./contexts/CoursesContext";
 import BottomNavigator from "./navigation/BottomNavigator";
 const Root = createStackNavigator();
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 function App() {
 	return (
-		<CoursesContextProvider>
-			<ProfileContextProvider>
-				<NavigationContainer>
-					<Root.Navigator>
-						<Root.Screen name="Root" component={BottomNavigator} />
-					</Root.Navigator>
-				</NavigationContainer>
-			</ProfileContextProvider>
-		</CoursesContextProvider>
+		<SafeAreaProvider>
+			<CoursesContextProvider>
+				<ProfileContextProvider>
+					<NavigationContainer>
+						<Root.Navigator>
+							<Root.Screen name="Root" component={BottomNavigator} />
+						</Root.Navigator>
+					</NavigationContainer>
+				</ProfileContextProvider>
+			</CoursesContextProvider>
+		</SafeAreaProvider>
 	);
 }
 

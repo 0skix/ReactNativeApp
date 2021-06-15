@@ -1,5 +1,11 @@
 import React, { useContext, useState } from "react";
-import { View, Image, FlatList, TouchableOpacity } from "react-native";
+import {
+	View,
+	Image,
+	FlatList,
+	TouchableOpacity,
+	ImageBackground,
+} from "react-native";
 import { Card, Text, LinearProgress } from "react-native-elements";
 import { CoursesContext } from "../contexts/CoursesContext";
 
@@ -14,24 +20,33 @@ const Courses = ({ navigation }) => {
 		{ id: "6", name: `Pharming`, route: "Pharming" },
 	]);
 	return (
-		<View>
-			<FlatList
-				data={cards}
-				renderItem={({ item }) => (
-					<Card>
-						<TouchableOpacity onPress={() => navigation.navigate(item.route)}>
-							<Text h4>{item.name}</Text>
-							<LinearProgress
-								color="primary"
-								variant={"determinate"}
-								value={progress.whaling}
-							/>
-						</TouchableOpacity>
-					</Card>
-				)}
-				keyExtractor={(item) => item.id}
-			/>
-		</View>
+		<ImageBackground
+			imageStyle={{
+				resizeMode: "repeat",
+				opacity: 1,
+			}}
+			style={{ width: "100%", height: "100%" }}
+			source={require("../assets/VectorWave.png")}
+		>
+			<View>
+				<FlatList
+					data={cards}
+					renderItem={({ item }) => (
+						<Card>
+							<TouchableOpacity onPress={() => navigation.navigate(item.route)}>
+								<Text h4>{item.name}</Text>
+								<LinearProgress
+									color="primary"
+									variant={"determinate"}
+									value={progress.whaling}
+								/>
+							</TouchableOpacity>
+						</Card>
+					)}
+					keyExtractor={(item) => item.id}
+				/>
+			</View>
+		</ImageBackground>
 	);
 };
 
