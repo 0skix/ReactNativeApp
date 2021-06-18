@@ -9,7 +9,22 @@ export const CoursesContextProvider = ({ children }) => {
 		clone: 0,
 		pharming: 0,
 	});
-	const value = { progress, setProgress };
+	const [checked, setChecked] = useState(false);
+	const [cSmsPhishing, setcSmsPhishing] = useState({
+		a: false,
+		b: false,
+		c: false,
+		d: false,
+		e: false,
+	});
+	const value = {
+		progress,
+		setProgress,
+		checked,
+		setChecked,
+		cSmsPhishing,
+		setcSmsPhishing,
+	};
 	return (
 		<CoursesContext.Provider value={value}>{children}</CoursesContext.Provider>
 	);

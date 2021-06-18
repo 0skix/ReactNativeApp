@@ -1,13 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Button, Overlay, Card } from "react-native-elements";
-import {
-	TouchableOpacity,
-	TextInput,
-	View,
-	Text,
-	ImageBackground,
-} from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 import { ProfileContext } from "../contexts/ProfileContext";
 import styled from "styled-components/native";
 import { Input } from "react-native-elements/dist/input/Input";
@@ -23,11 +17,11 @@ export const StyledText = styled.Text`
 	text-align: left;
 `;
 export const StyledText1 = styled.Text`
-	color: black;
-	font-size: 24px;
-	text-align: center;
-	width: 60%;
-	margin: 10px;
+	font-size: 18px;
+	color: #000000;
+	font-weight: 700;
+	text-decoration: none solid rgb(68, 68, 68);
+	text-align: justify;
 `;
 const StyledButtonText = styled.Text`
 	color: black;
@@ -74,21 +68,21 @@ const Welcome = () => {
 					<Card.Title>Witaj</Card.Title>
 					<Card.Divider />
 
-					<Text style={{ marginBottom: 10 }}>
+					<StyledText1 style={{ marginBottom: 10 }}>
 						Nasza aplikacja ma za zadanie uświadomić Ci jakie zagrożenia mogą
 						Cie spotkać w internecie i jak się przed nimi bronić
-					</Text>
-					<Text style={{ marginBottom: 10 }}>
+					</StyledText1>
+					<StyledText1 style={{ marginBottom: 10 }}>
 						Na podstawie twojego wieku dostosujemy zawartość aplikacji, a imię
 						pozwoli nam Cię lepiej poznać.
-					</Text>
-					<Text style={{ marginBottom: 10 }}>
+					</StyledText1>
+					<StyledText1 style={{ marginBottom: 10 }}>
 						Jeśli program nie poprosił Cię o wpisanie danych lub jeszcze tego
 						nie zrobiłeś kliknij w przycisk Otwórz Panel
-					</Text>
-					<Text style={{ marginBottom: 10 }}>
+					</StyledText1>
+					<StyledText1 style={{ marginBottom: 10 }}>
 						Jeśli podałeś swoje dane wyswiętlą się one po kliknięciu:
-					</Text>
+					</StyledText1>
 					<Button
 						buttonStyle={{
 							borderRadius: 0,
@@ -101,9 +95,9 @@ const Welcome = () => {
 					/>
 				</Card>
 				<Overlay isVisible={!visible1} onBackdropPress={toggleOverlay1}>
-					<Text h1>Twoje dane to:</Text>
-					<Text h1>Imie: {profile.name} </Text>
-					<Text h1>Wiek: {profile.age} </Text>
+					<StyledText1 h1>Twoje dane to:</StyledText1>
+					<StyledText1 h1>Imie: {profile.name} </StyledText1>
+					<StyledText1 h1>Wiek: {profile.age} </StyledText1>
 				</Overlay>
 				<Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
 					<Formik

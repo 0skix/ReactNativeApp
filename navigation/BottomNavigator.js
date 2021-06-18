@@ -16,37 +16,35 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomNavigator() {
 	return (
-		<Tab.Navigator initialRouteName="Welcome">
-			<Tab.Screen
-				name="Welcome"
-				component={Welcome}
-				options={{
-					tabBarIcon: () => {
-						<AntDesign name="home" size={24} color="black" />;
-					},
-				}}
-			/>
-			<Tab.Screen
-				name="Courses"
-				component={CoursesStackScreen}
-				// options={{
-				// 	tabBarIcon: () => <TabBarIcon name="ios-code" color={"red"} />,
-				// }}
-			/>
-			<Tab.Screen
-				name="Tests"
-				component={Tests}
-				// options={{
-				// 	tabBarIcon: () => <TabBarIcon name="ios-code" color={"red"} />,
-				// }}
-			/>
-			<Tab.Screen
-				name="Profile"
-				component={Profile}
-				// options={{
-				// 	tabBarIcon: () => <TabBarIcon name="ios-code" color={"red"} />,
-				// }}
-			/>
+		<Tab.Navigator
+			screenOptions={({ route }) => ({
+				tabBarIcon: ({ focused, color, size }) => {
+					let iconName;
+					if (route.name === "Welcome") {
+						iconName = focused ? "home" : "home";
+					} else if (route.name === "Courses") {
+						iconName = focused ? "bulb1" : "bulb1";
+					} else if (route.name === "Tests") {
+						iconName = focused ? "select1" : "select1";
+					} else if (route.name === "Profile") {
+						iconName = focused ? "profile" : "profile";
+					}
+					return <AntDesign name={iconName} size={size} color={color} />;
+				},
+			})}
+			tabBarOptions={{
+				activeTintColor: "#FEC034",
+				inactiveTintColor: "white",
+				activeBackgroundColor: "#FEC034",
+				inactiveTintColor: "white",
+				activeBackgroundColor: "#1c66c0",
+				inactiveBackgroundColor: "#1c66c0",
+			}}
+		>
+			<Tab.Screen name="Welcome" component={Welcome} />
+			<Tab.Screen name="Courses" component={CoursesStackScreen} />
+			<Tab.Screen name="Tests" component={Tests} />
+			<Tab.Screen name="Profile" component={Profile} />
 		</Tab.Navigator>
 	);
 }
