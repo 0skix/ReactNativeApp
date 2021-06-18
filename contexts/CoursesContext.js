@@ -1,14 +1,7 @@
 import React, { createContext, useState } from "react";
 export const CoursesContext = createContext();
 export const CoursesContextProvider = ({ children }) => {
-	const [progress, setProgress] = useState({
-		whaling: 0,
-		smsPhishing: 0,
-		nigerian: 0,
-		spear: 0,
-		clone: 0,
-		pharming: 0,
-	});
+	const [progress, setProgress] = useState([0, 0, 0, 0, 0, 0]);
 	const [checked, setChecked] = useState(false);
 	const [cSmsPhishing, setcSmsPhishing] = useState({
 		a: false,

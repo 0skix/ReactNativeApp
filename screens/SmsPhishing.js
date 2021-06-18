@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { Button, Overlay, Card } from "react-native-elements";
 import { CheckBox } from "react-native-elements/dist/checkbox/CheckBox";
@@ -14,10 +14,18 @@ const SmsPhishing = () => {
 		cSmsPhishing,
 		setcSmsPhishing,
 	} = useContext(CoursesContext);
+
+	useEffect(() => {
+		console.log(cSmsPhishing);
+	}, [cSmsPhishing]);
 	return (
 		<ScrollView>
 			<Card>
-				<Card.Title>Zapoznaj się z atakiem typu SmsPhishing</Card.Title>
+				<Card.Title>
+					Zapoznaj się z atakiem typu SmsPhishing{" "}
+					{cSmsPhishing.a === true ? "true" : "false"}
+					{cSmsPhishing.b === true ? "true" : "false"}
+				</Card.Title>
 				<Card.Divider />
 				<StyledText1 style={{ marginBottom: 5 }}>
 					• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów,
@@ -33,14 +41,14 @@ const SmsPhishing = () => {
 					onPress={() => {
 						if (cSmsPhishing.a === false) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, a: (prevState.a = true) };
+								return { ...prevState, a: true };
 							});
 							setProgress((prevState) => {
 								return { ...prevState, whaling: prevState.whaling + 0.2 };
 							});
 						} else if (cSmsPhishing.a === true) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, a: (prevState.a = false) };
+								return { ...prevState, a: false };
 							});
 							setProgress((prevState) => {
 								return {
@@ -66,14 +74,14 @@ const SmsPhishing = () => {
 					onPress={() => {
 						if (cSmsPhishing.b === false) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, b: (prevState.a = true) };
+								return { ...prevState, b: true };
 							});
 							setProgress((prevState) => {
 								return { ...prevState, whaling: prevState.whaling + 0.2 };
 							});
 						} else if (cSmsPhishing.b === true) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, b: (prevState.a = false) };
+								return { ...prevState, b: false };
 							});
 							setProgress((prevState) => {
 								return {
@@ -101,14 +109,14 @@ const SmsPhishing = () => {
 					onPress={() => {
 						if (cSmsPhishing.c === false) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, c: (prevState.a = true) };
+								return { ...prevState, c: true };
 							});
 							setProgress((prevState) => {
 								return { ...prevState, whaling: prevState.whaling + 0.2 };
 							});
 						} else if (cSmsPhishing.c === true) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, c: (prevState.a = false) };
+								return { ...prevState, c: false };
 							});
 							setProgress((prevState) => {
 								return {
@@ -136,14 +144,14 @@ const SmsPhishing = () => {
 					onPress={() => {
 						if (cSmsPhishing.d === false) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, d: (prevState.a = true) };
+								return { ...prevState, d: true };
 							});
 							setProgress((prevState) => {
 								return { ...prevState, whaling: prevState.whaling + 0.2 };
 							});
 						} else if (cSmsPhishing.d === true) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, d: (prevState.a = false) };
+								return { ...prevState, d: false };
 							});
 							setProgress((prevState) => {
 								return {
@@ -170,14 +178,14 @@ const SmsPhishing = () => {
 					onPress={() => {
 						if (cSmsPhishing.e === false) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, e: (prevState.a = true) };
+								return { ...prevState, e: true };
 							});
 							setProgress((prevState) => {
 								return { ...prevState, whaling: prevState.whaling + 0.2 };
 							});
 						} else if (cSmsPhishing.e === true) {
 							setcSmsPhishing((prevState) => {
-								return { ...prevState, e: (prevState.a = false) };
+								return { ...prevState, e: false };
 							});
 							setProgress((prevState) => {
 								return {

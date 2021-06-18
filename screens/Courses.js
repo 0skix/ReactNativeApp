@@ -41,14 +41,14 @@ const Courses = ({ navigation }) => {
 			<View>
 				<FlatList
 					data={cards}
-					renderItem={({ item }) => (
+					renderItem={({ item, index }) => (
 						<Card>
 							<TouchableOpacity onPress={() => navigation.navigate(item.route)}>
 								<Text h4>{item.name}</Text>
 								<LinearProgress
 									color="primary"
 									variant={"determinate"}
-									value={progress.whaling}
+									value={progress[index]}
 								/>
 							</TouchableOpacity>
 						</Card>
