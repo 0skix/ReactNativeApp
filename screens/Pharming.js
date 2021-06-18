@@ -1,58 +1,71 @@
-import React, { useState, useContext } from "react";
-import { View, Text } from "react-native";
-import { Button, Overlay, Card } from "react-native-elements";
+import React, { useContext } from "react";
+import { FlatList } from "react-native";
+import { Card } from "react-native-elements";
+import { CheckBox } from "react-native-elements/dist/checkbox/CheckBox";
 import { CoursesContext } from "../contexts/CoursesContext";
-// button który dodaje 0.2 za każdym wcisnięciem do pierwszego elementu stejta z coursescontext
+import { StyledText1 } from "./Welcome";
 const Pharming = () => {
-	const { progress, setProgress } = useContext(CoursesContext);
-	return (
-		<Card>
-			<Card.Title>
-				Zapoznaj się z atakiem typu Pharming {progress.whaling}
-			</Card.Title>
-			<Card.Divider />
+	const { progress, setProgress, cPharming, setcPharming } =
+		useContext(CoursesContext);
 
-			<Text style={{ marginBottom: 10 }}>
-				• Pharming – oszustwo, polegające na modyfikacji adresu www w celu
-				przekierowania użytkownika na fałszywą strone.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Aby ta technika mogła zadziałać potrzebne jest przeprowadzenie
-				dodatkowego ataku na urządzenie potencjalnej ofiary, w tym celu
-				najczęściej wykorzystuje się dwa rodzaje ataków: Zatruciu globalnego
-				serwera DNS, Atak z wykorzystaniem Trojanów.
-				<Button
-					buttonStyle={{
-						borderRadius: 0,
-						marginLeft: 0,
-						marginRight: 0,
-						marginBottom: 0,
-					}}
-					title="Przeczytano"
-					onPress={() => {
-						setProgress((prevState) => {
-							return { ...prevState, whaling: prevState.whaling + 0.2 };
-						});
-					}}
-				/>
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Atak polegający na zatruciu globalnego serwera DNS, w celu skojarzenia
-				prawdziwego adresu z serwerem zawierającym strone wykradającą poufne
-				dane.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Atak z wykorzystaniem trojanów polega na uprzednim zainfekowaniu
-				urządzenia wirusami, modyfikując lokalne pliki w systemie użytkownika,
-				odpowiedzialne za tłumaczenie nazw URL.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• W zdecydowanej większości przypadków, zapobieganie wygląda, przy
-				zainstalowaniu programu antywirusowego z aktualną bazą wirusów, oraz
-				uprzedzanie się czy strona na która wchodzimy posiada odpowiednie
-				certyfikaty.
-			</Text>
-		</Card>
+	const text = [
+		"• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów, które mają skłonić ofiarę do podjęcia określonego działania.",
+		"	• Przykładem SMS phishingu jest wiadomość w której kurier prosi o niewielką dopłatę do przesyłki w celu szybszego jej dostarczenia.",
+		"	• W przypadku SMS phishingu cyberprzestępcy używają wiadomościtekstowych, aby skłonić potencjalne ofiary do podania danych osobowych.",
+		"	• Wiadomości tekstowe zazwyczaj zawierają linki do podrobionych stron, które wyglądają identycznie jak strony banków czy innych stron, które znamy. Zdobywają tym samym nasze zaufanie i chętniej podajemy swoje dane, które następnie są wykorzystywane do niecnych celów hakerów.",
+		"• SmsPhishing zyskał popularność wśród przestępców, gdy ż stale rosnąca popularność smartfonów umożliwia im kradzież poufnych danych bez konieczności przełamywania zabezpieczeń komputera lub sieci.",
+	];
+	return (
+		<FlatList
+			data={text}
+			renderItem={({ item, index }) => (
+				<>
+					<Card>
+						<StyledText1 style={{ marginBottom: 5 }}>{item}</StyledText1>
+						<CheckBox
+							center
+							title="Odznacz sekcje"
+							checkedIcon="dot-circle-o"
+							uncheckedIcon="circle-o"
+							iconRight
+							checked={cPharming[index]}
+							onPress={() => {
+								if (cPharming[index] === false) {
+									setcPharming((prevState) => {
+										let result = prevState;
+										result[index] = true;
+										return [...result];
+									});
+									setProgress((prevState) => {
+										let result = prevState;
+										result[5] = cPharming.reduce(
+											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											0
+										);
+										return [...result];
+									});
+								} else if (cPharming[index] === true) {
+									setcPharming((prevState) => {
+										let result = prevState;
+										result[index] = false;
+										return [...result];
+									});
+									setProgress((prevState) => {
+										let result = prevState;
+										result[5] = cPharming.reduce(
+											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											0
+										);
+										return [...result];
+									});
+								}
+							}}
+						/>
+					</Card>
+				</>
+			)}
+			keyExtractor={(item) => item.id}
+		/>
 	);
 };
 

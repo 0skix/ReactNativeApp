@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import { Button, Overlay, Card } from "react-native-elements";
-import { View, Text, ImageBackground } from "react-native";
+import { View, ImageBackground } from "react-native";
 import { ProfileContext } from "../contexts/ProfileContext";
 import styled from "styled-components/native";
 import { Input } from "react-native-elements/dist/input/Input";

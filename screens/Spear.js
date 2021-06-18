@@ -1,60 +1,72 @@
-import React, { useState, useContext } from "react";
-import { View, Text } from "react-native";
-import { Button, Overlay, Card } from "react-native-elements";
+import React, { useContext } from "react";
+import { FlatList } from "react-native";
+import { Card } from "react-native-elements";
+import { CheckBox } from "react-native-elements/dist/checkbox/CheckBox";
 import { CoursesContext } from "../contexts/CoursesContext";
-// button który dodaje 0.2 za każdym wcisnięciem do pierwszego elementu stejta z coursescontext
-const Spear = () => {
-	const { progress, setProgress } = useContext(CoursesContext);
-	return (
-		<Card>
-			<Card.Title>
-				Zapoznaj się z atakiem typu SpearPhishing {progress.whaling}
-			</Card.Title>
-			<Card.Divider />
+import { StyledText1 } from "./Welcome";
 
-			<Text style={{ marginBottom: 10 }}>
-				• Spear phishing – To nie atak na anonimowego użytkownika sieci, ale
-				taki, który poprzedza wywiad środowiskowy oparty na informacjach
-				dostępnych w sieci.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• W trakcie przygotowań do ataku oszuści przeprowadzają pogłębiony
-				wywiad środowiskowy oparty na dostępnych w internecie informacjach
-				dotyczących potencjalnej ofiary.
-				<Button
-					buttonStyle={{
-						borderRadius: 0,
-						marginLeft: 0,
-						marginRight: 0,
-						marginBottom: 0,
-					}}
-					title="Przeczytano"
-					onPress={() => {
-						setProgress((prevState) => {
-							return { ...prevState, whaling: prevState.whaling + 0.2 };
-						});
-					}}
-				/>
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Hakerzy przygotowują się do ataku i skrupulatnie wyczekują momentu do
-				ataku, wykorzystują momenty w których osoby są poza obszarem firmy, np.
-				na wyjazdach służbowych co zwiększa szansę na powodzenie ataku.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Podobnie jak w przypadku tradycyjnych ataków phishingowych, ofiary
-				otrzymują e-mail, który wydaje się pochodzić od zaufanej osoby bądź
-				organizacji. Jednak przestępcy wykorzystujący spear phishing zamiast
-				rozsyłać zainfekowane wiadomości do milionów przypadkowych użytkowników
-				starannie dobierają swoje ofiary. Taka strategia znacznie zwiększa
-				szanse na sukces i powoduje, że nielegalne działania są trudniejsze do
-				wykrycia. Dodatkowo, inaczej niż w przypadku standardowych ataków
-				wymierzonych w nielegalne zdobycie środków finansowych, celem
-				przestępców wykorzystujących spear phishing jest zazwyczaj pozyskanie
-				konkretnych informacji, takich jak hasła dostępowe czy tajemnice
-				handlowe.
-			</Text>
-		</Card>
+const Spear = () => {
+	const { progress, setProgress, cSpear, setcSpear } =
+		useContext(CoursesContext);
+
+	const text = [
+		"• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów, które mają skłonić ofiarę do podjęcia określonego działania.",
+		"	• Przykładem SMS phishingu jest wiadomość w której kurier prosi o niewielką dopłatę do przesyłki w celu szybszego jej dostarczenia.",
+		"	• W przypadku SMS phishingu cyberprzestępcy używają wiadomościtekstowych, aby skłonić potencjalne ofiary do podania danych osobowych.",
+		"	• Wiadomości tekstowe zazwyczaj zawierają linki do podrobionych stron, które wyglądają identycznie jak strony banków czy innych stron, które znamy. Zdobywają tym samym nasze zaufanie i chętniej podajemy swoje dane, które następnie są wykorzystywane do niecnych celów hakerów.",
+		"• SmsPhishing zyskał popularność wśród przestępców, gdy ż stale rosnąca popularność smartfonów umożliwia im kradzież poufnych danych bez konieczności przełamywania zabezpieczeń komputera lub sieci.",
+	];
+	return (
+		<FlatList
+			data={text}
+			renderItem={({ item, index }) => (
+				<>
+					<Card>
+						<StyledText1 style={{ marginBottom: 5 }}>{item}</StyledText1>
+						<CheckBox
+							center
+							title="Odznacz sekcje"
+							checkedIcon="dot-circle-o"
+							uncheckedIcon="circle-o"
+							iconRight
+							checked={cSpear[index]}
+							onPress={() => {
+								if (cSpear[index] === false) {
+									setcSpear((prevState) => {
+										let result = prevState;
+										result[index] = true;
+										return [...result];
+									});
+									setProgress((prevState) => {
+										let result = prevState;
+										result[3] = cSpear.reduce(
+											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											0
+										);
+										return [...result];
+									});
+								} else if (cSpear[index] === true) {
+									setcSpear((prevState) => {
+										let result = prevState;
+										result[index] = false;
+										return [...result];
+									});
+									setProgress((prevState) => {
+										let result = prevState;
+										result[3] = cSpear.reduce(
+											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											0
+										);
+										return [...result];
+									});
+								}
+							}}
+						/>
+					</Card>
+				</>
+			)}
+			keyExtractor={(item) => item.id}
+		/>
 	);
 };
 

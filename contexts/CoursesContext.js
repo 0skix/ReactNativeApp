@@ -10,6 +10,23 @@ export const CoursesContextProvider = ({ children }) => {
 		false,
 		false,
 	]);
+	const [cWhaling, setcWhaling] = useState([false, false, false, false, false]);
+	const [cSpear, setcSpear] = useState([false, false, false, false, false]);
+	const [cClone, setcClone] = useState([false, false, false, false, false]);
+	const [cPharming, setcPharming] = useState([
+		false,
+		false,
+		false,
+		false,
+		false,
+	]);
+	const [cNigerian, setcNigerian] = useState([
+		false,
+		false,
+		false,
+		false,
+		false,
+	]);
 	const value = {
 		progress,
 		setProgress,
@@ -17,6 +34,16 @@ export const CoursesContextProvider = ({ children }) => {
 		setChecked,
 		cSmsPhishing,
 		setcSmsPhishing,
+		cWhaling,
+		setcWhaling,
+		cNigerian,
+		setcNigerian,
+		cSpear,
+		setcSpear,
+		cClone,
+		setcClone,
+		cPharming,
+		setcPharming,
 	};
 	return (
 		<CoursesContext.Provider value={value}>{children}</CoursesContext.Provider>

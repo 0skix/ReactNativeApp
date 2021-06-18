@@ -1,59 +1,77 @@
-import React, { useState, useContext } from "react";
-import { View, Text } from "react-native";
-import { Button, Overlay, Card } from "react-native-elements";
+import React, { useContext } from "react";
+import { FlatList } from "react-native";
+import { Card } from "react-native-elements";
+import { CheckBox } from "react-native-elements/dist/checkbox/CheckBox";
 import { CoursesContext } from "../contexts/CoursesContext";
+import { StyledText1 } from "./Welcome";
 // button który dodaje 0.2 za każdym wcisnięciem do pierwszego elementu stejta z coursescontext
 const Nigerian = () => {
-	const { progress, setProgress } = useContext(CoursesContext);
-	return (
-		<Card>
-			<Card.Title>
-				Zapoznaj się z atakiem typu NigeryjskieOszustwa {progress.whaling}
-			</Card.Title>
-			<Card.Divider />
+	const {
+		progress,
+		setProgress,
 
-			<Text style={{ marginBottom: 10 }}>
-				• Nigeryjskie oszustwo – oszustwo, najczęściej zapoczątkowane kontaktem
-				poprzez wykorzystanie poczty elektronicznej, polegające na wciągnięciu
-				ofiary w grę psychologiczną, której fabuła oparta jest na fikcyjnym
-				transferze dużej (często przesadnie wygórowanej) kwoty pieniędzy, z
-				jednego z krajów afrykańskich (najczęściej Nigerii, choć obecnie może
-				również chodzić o każdy inny) - mającą na celu wyłudzenie pieniędzy.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• W korespondencji pada propozycja zyskania znacznej kwoty pieniędzy,
-				części fortuny, jaką posiada (czy też odziedziczył) oszust, ale której
-				sam nie może podjąć z banku z różnych przyczyn. Oszust usiłuje w ten
-				sposób zyskać przychylność ofiary, co następnie wykorzysta przy dalszym
-				oszustwie.
-				<Button
-					buttonStyle={{
-						borderRadius: 0,
-						marginLeft: 0,
-						marginRight: 0,
-						marginBottom: 0,
-					}}
-					title="Przeczytano"
-					onPress={() => {
-						setProgress((prevState) => {
-							return { ...prevState, whaling: prevState.whaling + 0.2 };
-						});
-					}}
-				/>
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Potencjalna ofiara otrzymuje poprzez pocztę elektroniczną,
-				spreparowaną wiadomość o wygranej dużej sumie pieniędzy w jednej z
-				loterii któregoś europejskiego kraju. Do powyższej informacji załączone
-				są certyfikaty uprawdopodobniające wygraną oraz istnienie samej loterii.
-			</Text>
-			<Text style={{ marginBottom: 10 }}>
-				• Oszuści żerują na łatwowierności, próbują także taktyki ze spadkiem.
-				Wmawiają ofierze, że jest jedynym, żyjącym spadkobiercą ogromnego
-				spadku, ale zanim go otrzyma musi spełnić określone kryteria, czy też
-				opłacić różnego rodzaju składki czy podatki.
-			</Text>
-		</Card>
+		cNigerian,
+		setcNigerian,
+	} = useContext(CoursesContext);
+
+	const text = [
+		"• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów, które mają skłonić ofiarę do podjęcia określonego działania.",
+		"• Przykładem SMS phishingu jest wiadomość w której kurier prosi o niewielką dopłatę do przesyłki w celu szybszego jej dostarczenia.",
+		"• W przypadku SMS phishingu cyberprzestępcy używają wiadomościtekstowych, aby skłonić potencjalne ofiary do podania danych osobowych.",
+		"• Wiadomości tekstowe zazwyczaj zawierają linki do podrobionych stron, które wyglądają identycznie jak strony banków czy innych stron, które znamy. Zdobywają tym samym nasze zaufanie i chętniej podajemy swoje dane, które następnie są wykorzystywane do niecnych celów hakerów.",
+		"• SmsPhishing zyskał popularność wśród przestępców, gdy ż stale rosnąca popularność smartfonów umożliwia im kradzież poufnych danych bez konieczności przełamywania zabezpieczeń komputera lub sieci.",
+	];
+	return (
+		<FlatList
+			data={text}
+			renderItem={({ item, index }) => (
+				<>
+					<Card>
+						<StyledText1 style={{ marginBottom: 5 }}>{item}</StyledText1>
+						<CheckBox
+							center
+							title="Odznacz sekcje"
+							checkedIcon="dot-circle-o"
+							uncheckedIcon="circle-o"
+							iconRight
+							checked={cNigerian[index]}
+							onPress={() => {
+								if (cNigerian[index] === false) {
+									setcNigerian((prevState) => {
+										let result = prevState;
+										result[index] = true;
+										return [...result];
+									});
+									setProgress((prevState) => {
+										let result = prevState;
+										result[2] = cNigerian.reduce(
+											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											0
+										);
+										return [...result];
+									});
+								} else if (cNigerian[index] === true) {
+									setcNigerian((prevState) => {
+										let result = prevState;
+										result[index] = false;
+										return [...result];
+									});
+									setProgress((prevState) => {
+										let result = prevState;
+										result[2] = cNigerian.reduce(
+											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											0
+										);
+										return [...result];
+									});
+								}
+							}}
+						/>
+					</Card>
+				</>
+			)}
+			keyExtractor={(item) => item.id}
+		/>
 	);
 };
 

@@ -1,14 +1,7 @@
 import React, { useContext } from "react";
 import { ProfileContext } from "../contexts/ProfileContext";
-import styled from "styled-components/native";
 import { StyledContainer, StyledText } from "./Welcome";
-import {
-	TouchableOpacity,
-	TextInput,
-	View,
-	Text,
-	ImageBackground,
-} from "react-native";
+import { ImageBackground } from "react-native";
 const Profile = () => {
 	const { profile, setProfile } = useContext(ProfileContext);
 	return (
