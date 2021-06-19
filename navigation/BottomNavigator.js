@@ -20,13 +20,13 @@ export default function BottomNavigator() {
 			screenOptions={({ route }) => ({
 				tabBarIcon: ({ focused, color, size }) => {
 					let iconName;
-					if (route.name === "Welcome") {
+					if (route.name === "Witaj") {
 						iconName = focused ? "home" : "home";
-					} else if (route.name === "Courses") {
+					} else if (route.name === "Kursy") {
 						iconName = focused ? "bulb1" : "bulb1";
-					} else if (route.name === "Tests") {
+					} else if (route.name === "Testy") {
 						iconName = focused ? "select1" : "select1";
-					} else if (route.name === "Profile") {
+					} else if (route.name === "Profil") {
 						iconName = focused ? "profile" : "profile";
 					}
 					return <AntDesign name={iconName} size={size} color={color} />;
@@ -41,10 +41,10 @@ export default function BottomNavigator() {
 				inactiveBackgroundColor: "#1c66c0",
 			}}
 		>
-			<Tab.Screen name="Welcome" component={Welcome} />
-			<Tab.Screen name="Courses" component={CoursesStackScreen} />
-			<Tab.Screen name="Tests" component={Tests} />
-			<Tab.Screen name="Profile" component={Profile} />
+			<Tab.Screen name="Witaj" component={Welcome} />
+			<Tab.Screen name="Kursy" component={CoursesStackScreen} />
+			<Tab.Screen name="Testy" component={Tests} />
+			<Tab.Screen name="Profil" component={Profile} />
 		</Tab.Navigator>
 	);
 }
@@ -54,7 +54,7 @@ const CoursesStack = createStackNavigator();
 function CoursesStackScreen() {
 	return (
 		<CoursesStack.Navigator initialRouteName="Courses">
-			<CoursesStack.Screen name="Courses" component={Courses} />
+			<CoursesStack.Screen name="Kursy" component={Courses} />
 			<CoursesStack.Screen name="Whaling" component={Whaling} />
 			<CoursesStack.Screen name="SmsPhishing" component={SmsPhishing} />
 			<CoursesStack.Screen name="Pharming" component={Pharming} />

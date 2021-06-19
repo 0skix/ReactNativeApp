@@ -6,14 +6,8 @@ import { CoursesContext } from "../contexts/CoursesContext";
 import { StyledContainer, StyledText1 } from "./Welcome";
 
 const Whaling = () => {
-	const {
-		progress,
-		setProgress,
-		checked,
-		setChecked,
-		cSmsPhishing,
-		setcSmsPhishing,
-	} = useContext(CoursesContext);
+	const { progress, setProgress, checked, setChecked, cWhaling, setcWhaling } =
+		useContext(CoursesContext);
 	const text = [
 		"• Whaling – atak phishingowy nakierowany na osoby decyzyjne wyższego szczebla.",
 		"• Whaling nie jest wysyłanym na ślepo spamem. Jest zaplanowanymatakiem na konkretne osoby, zazwyczaj będące członkami działów	finansowych dużych korporacji.",
@@ -34,31 +28,31 @@ const Whaling = () => {
 							checkedIcon="dot-circle-o"
 							uncheckedIcon="circle-o"
 							iconRight
-							checked={cSmsPhishing[index]}
+							checked={cWhaling[index]}
 							onPress={() => {
-								if (cSmsPhishing[index] === false) {
-									setcSmsPhishing((prevState) => {
+								if (cWhaling[index] === false) {
+									setcWhaling((prevState) => {
 										let result = prevState;
 										result[index] = true;
 										return [...result];
 									});
 									setProgress((prevState) => {
 										let result = prevState;
-										result[0] = cSmsPhishing.reduce(
+										result[0] = cWhaling.reduce(
 											(acc, curr) => (curr === true ? acc + 0.2 : acc),
 											0
 										);
 										return [...result];
 									});
-								} else if (cSmsPhishing[index] === true) {
-									setcSmsPhishing((prevState) => {
+								} else if (cWhaling[index] === true) {
+									setcWhaling((prevState) => {
 										let result = prevState;
 										result[index] = false;
 										return [...result];
 									});
 									setProgress((prevState) => {
 										let result = prevState;
-										result[0] = cSmsPhishing.reduce(
+										result[0] = cWhaling.reduce(
 											(acc, curr) => (curr === true ? acc + 0.2 : acc),
 											0
 										);

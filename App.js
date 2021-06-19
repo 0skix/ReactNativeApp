@@ -18,7 +18,7 @@ function App() {
 				<ProfileContextProvider>
 					<NavigationContainer>
 						<Root.Navigator>
-							<Root.Screen name="Root" component={BottomNavigator} />
+							<Root.Screen name=" " component={BottomNavigator} />
 						</Root.Navigator>
 					</NavigationContainer>
 				</ProfileContextProvider>
