@@ -5,30 +5,32 @@ import { StyledText1 } from "./Welcome";
 
 //state z arrayem co ma tyle elementów co array "answers", elementy zero. jeśli zcheckowany jest odpowiedni asnwer, zamień
 const Test1 = () => {
-	const [checked, setChecked] = useState([
-		[false, false, false, false],
-		[false, false, false, false],
-	]);
 	const [test, setTest] = useState([
 		{
 			question: "Czy Kamil jest potężny?",
 			answers: [
-				{ answer: "tak", correct: false },
+				{ answer: "tak", correct: true },
 				{ answer: "asde", correct: false },
-				{ answer: "tasdasak", correct: true },
+				{ answer: "tasdasak", correct: false },
 				{ answer: "nie", correct: false },
 			],
 		},
 		{
 			question: "Czy Kamil jest głupi?",
 			answers: [
-				{ answer: "tak", correct: true },
-				{ answer: "nie", correct: false },
+				{ answer: "tak", correct: false },
+				{ answer: "nie", correct: true },
 				{ answer: "halo", correct: false },
 				{ answer: "asdasd", correct: false },
 			],
 		},
 	]);
+
+	const [checked, setChecked] = useState(
+		test.map((el) => {
+			return { answer: "", correct: false, id: null };
+		})
+	);
 	const [answers, setanswers] = useState([0, 0]);
 	return (
 		<View>
@@ -46,26 +48,22 @@ const Test1 = () => {
 									<>
 										<StyledText1>
 											<CheckBox
-												checked={checked[id][index]}
+												checked={checked[id].answer === el.answer}
 												center
 												title={el.answer}
-												onPress={() => {
-													if (checked[id][index] === false) {
-														setChecked((prevState) => {
-															let result = prevState;
-															result[id] = [false, false, false, false];
-															result[id][index] = true;
-															return [...result];
-														});
-													} else if (checked[id][index] === true) {
-														setChecked((prevState) => {
-															let result = prevState;
-															result[id][index] = false;
-															return [...result];
-														});
-													}
-												}}
+												onPress={() =>
+													setChecked((prevState) => {
+														let result = prevState;
+														result[id] = {
+															...prevState,
+															answer: el.answer,
+															correct: el.correct,
+														};
+														return [...result];
+													})
+												}
 											/>
+											{checked[id].correct === true ? "true" : "false"}
 										</StyledText1>
 									</>
 								);
