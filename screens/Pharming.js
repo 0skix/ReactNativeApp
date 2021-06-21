@@ -9,11 +9,11 @@ const Pharming = () => {
 		useContext(CoursesContext);
 
 	const text = [
-		"• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów, które mają skłonić ofiarę do podjęcia określonego działania.",
-		"	• Przykładem SMS phishingu jest wiadomość w której kurier prosi o niewielką dopłatę do przesyłki w celu szybszego jej dostarczenia.",
-		"	• W przypadku SMS phishingu cyberprzestępcy używają wiadomościtekstowych, aby skłonić potencjalne ofiary do podania danych osobowych.",
-		"	• Wiadomości tekstowe zazwyczaj zawierają linki do podrobionych stron, które wyglądają identycznie jak strony banków czy innych stron, które znamy. Zdobywają tym samym nasze zaufanie i chętniej podajemy swoje dane, które następnie są wykorzystywane do niecnych celów hakerów.",
-		"• SmsPhishing zyskał popularność wśród przestępców, gdy ż stale rosnąca popularność smartfonów umożliwia im kradzież poufnych danych bez konieczności przełamywania zabezpieczeń komputera lub sieci.",
+		"• Pharming – oszustwo, polegające na modyfikacji adresu www w celu przekierowania użytkownika na fałszywą strone.",
+		"• Aby ta technika mogła zadziałać potrzebne jest przeprowadzenie dodatkowego ataku na urządzenie potencjalnej ofiary, w tym celu najczęściej wykorzystuje się dwa rodzaje ataków: Zatruciu globalnego serwera DNS, Atak z wykorzystaniem Trojanów.",
+		"• Atak polegający na zatruciu globalnego serwera DNS, w celu skojarzenia prawdziwego adresu z serwerem zawierającym strone wykradającą poufne dane",
+		"• Atak z wykorzystaniem trojanów polega na uprzednim zainfekowaniu urządzenia wirusami, modyfikując lokalne pliki w systemie użytkownika, odpowiedzialne za tłumaczenie nazw URL.",
+		"• W zdecydowanej większości przypadków, zabezpieczenie przed Pharmingiem odbywa się za pomocą programu antywirusowego z aktualną bazą wirusów, oraz sprawdzanie czy strona na która wchodzimy posiada odpowiednie certyfikaty.",
 	];
 	return (
 		<FlatList

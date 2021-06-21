@@ -12,6 +12,9 @@ import Pharming from "../screens/Pharming";
 import Spear from "../screens/Spear";
 import Clone from "../screens/Clone";
 import Nigerian from "../screens/Nigerian";
+import Protect from "../screens/Protect";
+import Test1 from "../screens/Test1";
+import Test2 from "../screens/Test2";
 const Tab = createBottomTabNavigator();
 
 export default function BottomNavigator() {
@@ -43,7 +46,7 @@ export default function BottomNavigator() {
 		>
 			<Tab.Screen name="Witaj" component={Welcome} />
 			<Tab.Screen name="Kursy" component={CoursesStackScreen} />
-			<Tab.Screen name="Testy" component={Tests} />
+			<Tab.Screen name="Testy" component={TestsStackScreen} />
 			<Tab.Screen name="Profil" component={Profile} />
 		</Tab.Navigator>
 	);
@@ -61,6 +64,18 @@ function CoursesStackScreen() {
 			<CoursesStack.Screen name="Spear" component={Spear} />
 			<CoursesStack.Screen name="Clone" component={Clone} />
 			<CoursesStack.Screen name="Nigerian" component={Nigerian} />
+			<CoursesStack.Screen name="Protect" component={Protect} />
 		</CoursesStack.Navigator>
+	);
+}
+const TestsStack = createStackNavigator();
+
+function TestsStackScreen() {
+	return (
+		<TestsStack.Navigator initialRouteName="Courses">
+			<TestsStack.Screen name="Testy" component={Tests} />
+			<TestsStack.Screen name="Test1" component={Test1} />
+			<TestsStack.Screen name="Test2" component={Test2} />
+		</TestsStack.Navigator>
 	);
 }

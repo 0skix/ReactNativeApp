@@ -9,11 +9,10 @@ const Clone = () => {
 		useContext(CoursesContext);
 
 	const text = [
-		"• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów, które mają skłonić ofiarę do podjęcia określonego działania.",
-		"	• Przykładem SMS phishingu jest wiadomość w której kurier prosi o niewielką dopłatę do przesyłki w celu szybszego jej dostarczenia.",
-		"	• W przypadku SMS phishingu cyberprzestępcy używają wiadomościtekstowych, aby skłonić potencjalne ofiary do podania danych osobowych.",
-		"	• Wiadomości tekstowe zazwyczaj zawierają linki do podrobionych stron, które wyglądają identycznie jak strony banków czy innych stron, które znamy. Zdobywają tym samym nasze zaufanie i chętniej podajemy swoje dane, które następnie są wykorzystywane do niecnych celów hakerów.",
-		"• SmsPhishing zyskał popularność wśród przestępców, gdy ż stale rosnąca popularność smartfonów umożliwia im kradzież poufnych danych bez konieczności przełamywania zabezpieczeń komputera lub sieci.",
+		"•	Clone phishing – Polega on na tym, że prawdziwa wiadomość mailowa, w której znajduje się link lub załącznik, zostaje zastąpiona złośliwymi wersjami. Następnie wiadomość taka wysyłana jest do ofiary z innego adresu mailowego. Z reguły są to wiadomość, które rzekomo pochodzą od różnego typu instytucji rządowych czy banków.",
+		"•	Należy pamiętać, że tego rodzaju firmy, w szczególności banki, nigdy nie proszą użytkowników o podanie poufnych informacji. W przypadku clone phishing wykorzystywane jest zaufanie społeczne, które posiada dana firma lub instytucja. Działa tutaj prosty mechanizm – użytkownik wychodzi z założenia, że skoro otrzymał maila na przykład z Ministerstwa Finansów, to musi on być wiarygodny. Niestety – z reguły jest to próba oszustwa.",
+		"•	Ta technika może zostać użyta pośrednio, przy pomocy wcześniej zainfekowanej maszyny do stworzenia następnej wykorzystującej zaufanie społeczne do wnioskowanego adresu email, ponieważ obie strony otrzymują taki sam mail.",
+		"•	Technika clone phishingu zyskała niewiarygodną popularność, przez wszelakie dodatkowe zabezpieczenia na prawie każdej stronie takie jak podwójna weryfikacja.",
 	];
 	return (
 		<FlatList

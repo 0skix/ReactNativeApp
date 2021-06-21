@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Welcome from "./screens/Welcome";
 import ProfileContextProvider from "./contexts/ProfileContext";
 import { CoursesContextProvider } from "./contexts/CoursesContext";
+import { TestsContextProvider } from "./contexts/TestsContext";
 import BottomNavigator from "./navigation/BottomNavigator";
 const Root = createStackNavigator();
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -14,15 +15,17 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 function App() {
 	return (
 		<SafeAreaProvider>
-			<CoursesContextProvider>
-				<ProfileContextProvider>
-					<NavigationContainer>
-						<Root.Navigator>
-							<Root.Screen name=" " component={BottomNavigator} />
-						</Root.Navigator>
-					</NavigationContainer>
-				</ProfileContextProvider>
-			</CoursesContextProvider>
+			<TestsContextProvider>
+				<CoursesContextProvider>
+					<ProfileContextProvider>
+						<NavigationContainer>
+							<Root.Navigator>
+								<Root.Screen name=" " component={BottomNavigator} />
+							</Root.Navigator>
+						</NavigationContainer>
+					</ProfileContextProvider>
+				</CoursesContextProvider>
+			</TestsContextProvider>
 		</SafeAreaProvider>
 	);
 }

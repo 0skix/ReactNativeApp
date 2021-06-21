@@ -10,11 +10,10 @@ const Spear = () => {
 		useContext(CoursesContext);
 
 	const text = [
-		"• SMS phishing – atak socjotechniczny polegający na rozsyłaniu SMS-ów, które mają skłonić ofiarę do podjęcia określonego działania.",
-		"	• Przykładem SMS phishingu jest wiadomość w której kurier prosi o niewielką dopłatę do przesyłki w celu szybszego jej dostarczenia.",
-		"	• W przypadku SMS phishingu cyberprzestępcy używają wiadomościtekstowych, aby skłonić potencjalne ofiary do podania danych osobowych.",
-		"	• Wiadomości tekstowe zazwyczaj zawierają linki do podrobionych stron, które wyglądają identycznie jak strony banków czy innych stron, które znamy. Zdobywają tym samym nasze zaufanie i chętniej podajemy swoje dane, które następnie są wykorzystywane do niecnych celów hakerów.",
-		"• SmsPhishing zyskał popularność wśród przestępców, gdy ż stale rosnąca popularność smartfonów umożliwia im kradzież poufnych danych bez konieczności przełamywania zabezpieczeń komputera lub sieci.",
+		"• Spear phishing – To nie atak na anonimowego użytkownika sieci, ale taki, który poprzedza wywiad środowiskowy oparty na informacjach dostępnych w sieci.",
+		"• W trakcie przygotowań do ataku oszuści przeprowadzają pogłębiony wywiad środowiskowy oparty na dostępnych w internecie informacjach dotyczących potencjalnej ofiary.",
+		"• Hakerzy przygotowują się do ataku i skrupulatnie wyczekują momentu do ataku, wykorzystują momenty w których osoby są poza obszarem firmy, np. na wyjazdach służbowych co zwiększa szansę na powodzenie ataku.",
+		"• Podobnie jak w przypadku tradycyjnych ataków phishingowych, ofiary otrzymują e-mail, który wydaje się pochodzić od zaufanej osoby bądź organizacji. Jednak przestępcy wykorzystujący spear phishing zamiast rozsyłać zainfekowane wiadomości do milionów przypadkowych użytkowników starannie dobierają swoje ofiary. Taka strategia znacznie zwiększa szanse na sukces i powoduje, że nielegalne działania są trudniejsze do wykrycia. Dodatkowo, inaczej niż w przypadku standardowych ataków wymierzonych w nielegalne zdobycie środków finansowych, celem przestępców wykorzystujących spear phishing jest zazwyczaj pozyskanie konkretnych informacji, takich jak hasła dostępowe czy tajemnice handlowe.",
 	];
 	return (
 		<FlatList
@@ -40,7 +39,7 @@ const Spear = () => {
 									setProgress((prevState) => {
 										let result = prevState;
 										result[3] = cSpear.reduce(
-											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											(acc, curr) => (curr === true ? acc + 0.25 : acc),
 											0
 										);
 										return [...result];
@@ -54,7 +53,7 @@ const Spear = () => {
 									setProgress((prevState) => {
 										let result = prevState;
 										result[3] = cSpear.reduce(
-											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											(acc, curr) => (curr === true ? acc + 0.25 : acc),
 											0
 										);
 										return [...result];
