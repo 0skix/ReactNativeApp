@@ -4,7 +4,7 @@ export const TestsContextProvider = ({ children }) => {
 	const [progress, setProgress] = useState([0, 0, 0, 0, 0, 0, 0]);
 	const [toggle, setToggle] = useState(true);
 	const [toggle1, setToggle1] = useState(true);
-	const [score, setScore] = useState([0, 0]);
+	const [score, setScore] = useState([0.4, 0.6]);
 	const [confirm, setConfirm] = useState(false);
 	const [confirm1, setConfirm1] = useState(false);
 	const value = {

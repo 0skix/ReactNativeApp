@@ -1,5 +1,11 @@
 import React, { useContext, useState } from "react";
-import { View, FlatList, ImageBackground, ScrollView } from "react-native";
+import {
+	View,
+	FlatList,
+	ImageBackground,
+	ScrollView,
+	Alert,
+} from "react-native";
 import { Card, Text, LinearProgress, Button } from "react-native-elements";
 import { Avatar } from "react-native-elements/dist/avatar/Avatar";
 import { ListItem } from "react-native-elements/dist/list/ListItem";
@@ -8,6 +14,7 @@ import { TestsContext } from "../contexts/TestsContext";
 import { ProfileContext } from "../contexts/ProfileContext";
 import { StyledText1 } from "./Welcome";
 import styled from "styled-components/native";
+import { Overlay } from "react-native-elements/dist/overlay/Overlay";
 
 export const StyledText2 = styled.Text`
 	font-size: 18px;
@@ -29,6 +36,10 @@ const Courses = ({ navigation }) => {
 		setConfirm1,
 	} = useContext(TestsContext);
 	const { progress } = useContext(CoursesContext);
+	const [visible, setVisible] = useState(true);
+	const toggleOverlay = () => {
+		setVisible(!visible);
+	};
 	const { profile } = useContext(ProfileContext);
 	const [cards1, setCards1] = useState([
 		{ id: "1", name: `Test A`, route: "Test1" },
@@ -66,6 +77,10 @@ const Courses = ({ navigation }) => {
 			style={{ width: "100%", height: "100%" }}
 			source={require("../assets/VectorWave.png")}
 		>
+			<Overlay isVisible={!visible} onBackdropPress={toggleOverlay}>
+				<StyledText1 h1>Otrzymujesz Order Wiewióra!</StyledText1>
+			</Overlay>
+
 			<ScrollView>
 				<Card>
 					<ListItem>
@@ -130,6 +145,22 @@ const Courses = ({ navigation }) => {
 							</View>
 						)}
 						keyExtractor={(item) => item.id}
+					/>
+					<Button
+						buttonStyle={{
+							borderRadius: 0,
+							marginLeft: 0,
+							marginRight: 0,
+							marginBottom: 0,
+						}}
+						title="Sprawdź czy Ci się udało!"
+						onPress={() =>
+							score[0] >= 0.5 && score[1] >= 0.5
+								? setVisible(!visible)
+								: Alert.alert(
+										"Troche Ci brakuje... Zdaj testy na poziomie conajmniej 50%"
+								  )
+						}
 					/>
 				</Card>
 			</ScrollView>
