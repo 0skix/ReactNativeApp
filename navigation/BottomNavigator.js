@@ -72,7 +72,7 @@ const TestsStack = createStackNavigator();
 
 function TestsStackScreen() {
 	return (
-		<TestsStack.Navigator initialRouteName="Courses">
+		<TestsStack.Navigator initialRouteName="Tests">
 			<TestsStack.Screen name="Testy" component={Tests} />
 			<TestsStack.Screen name="Test1" component={Test1} />
 			<TestsStack.Screen name="Test2" component={Test2} />

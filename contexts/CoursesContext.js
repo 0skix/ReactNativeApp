@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 export const CoursesContext = createContext();
 export const CoursesContextProvider = ({ children }) => {
-	const [progress, setProgress] = useState([0, 0, 0, 0, 0, 0, 0]);
+	const [progress, setProgress] = useState([1, 1, 1, 1, 1, 1, 1]);
 	const [checked, setChecked] = useState(false);
 	const [cSmsPhishing, setcSmsPhishing] = useState([
 		false,

@@ -38,7 +38,7 @@ const Clone = () => {
 									setProgress((prevState) => {
 										let result = prevState;
 										result[4] = cClone.reduce(
-											(acc, curr) => (curr === true ? acc + 0.2 : acc),
+											(acc, curr) => (curr === true ? acc + 0.25 : acc),
 											0
 										);
 										return [...result];
