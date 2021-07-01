@@ -73,8 +73,8 @@ const Welcome = () => {
 						Cie spotkać w internecie i jak się przed nimi bronić
 					</StyledText1>
 					<StyledText1 style={{ marginBottom: 10 }}>
-						Na podstawie twojego wieku dostosujemy zawartość aplikacji, a imię
-						pozwoli nam Cię lepiej poznać.
+						Podaj nam swoje imię oraz wiek. Te dane pozwolą nam Cię lepiej
+						poznać.
 					</StyledText1>
 					<StyledText1 style={{ marginBottom: 10 }}>
 						Jeśli program nie poprosił Cię o wpisanie danych lub jeszcze tego

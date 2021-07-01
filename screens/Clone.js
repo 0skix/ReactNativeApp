@@ -14,6 +14,7 @@ const Clone = () => {
 		"•	Ta technika może zostać użyta pośrednio, przy pomocy wcześniej zainfekowanej maszyny do stworzenia następnej wykorzystującej zaufanie społeczne do wnioskowanego adresu email, ponieważ obie strony otrzymują taki sam mail.",
 		"•	Technika clone phishingu zyskała niewiarygodną popularność, przez wszelakie dodatkowe zabezpieczenia na prawie każdej stronie takie jak podwójna weryfikacja.",
 	];
+
 	return (
 		<FlatList
 			data={text}

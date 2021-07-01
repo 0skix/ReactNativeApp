@@ -16,11 +16,11 @@ const Tests = ({ navigation }) => {
 		setVisible(!visible);
 	};
 	const [cards, setCards] = useState([
-		{ id: "1", name: `Test A`, route: "Test1" },
+		{ id: "1", name: `Test A`, route: "TestA" },
 		{
 			id: "2",
 			name: `Test B`,
-			route: "Test2",
+			route: "TestB",
 		},
 	]);
 	return (
